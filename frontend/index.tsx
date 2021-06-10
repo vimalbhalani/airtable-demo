@@ -1,4 +1,3 @@
-import { flexDirection } from "@airtable/blocks/dist/types/src/ui/system";
 import {
   Box,
   initializeBlock,
@@ -17,12 +16,11 @@ function HelloWorldTypescriptApp() {
   const view = table.getViewById(cursor.activeViewId);
   const queryResult = view.selectRecords();
   const records = useRecords(queryResult);
-  console.log(`records`, records);
 
   return (
     <Box>
       {records.map((record) => (
-        <Box padding={3} borderBottom="thick">
+        <Box padding={3} borderBottom="thick" key={record.id}>
           {table.fields.map((field) => (
             <>
               <Label>{field.name}</Label>
